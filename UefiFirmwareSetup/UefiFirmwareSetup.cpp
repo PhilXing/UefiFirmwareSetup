@@ -77,7 +77,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	// Set indication for Boot to Firmware UI with error check
 	//
 	OsIndications = OsIndications | EFI_OS_INDICATIONS_BOOT_TO_FW_UI;
-	if (!SetFirmwareEnvironmentVariable(L"OsIndications",EFI_GLOBAL_VARIABLE_GUID, &OsIndications, sizeof(DWORD))) {
+	if (!SetFirmwareEnvironmentVariable(L"OsIndications",EFI_GLOBAL_VARIABLE_GUID, &OsIndications, sizeof(OsIndications))) {
 	    if (GetLastError() == ERROR_NOACCESS) { // GUID Namespace does not exist....
 			MessageBox(NULL, L"GUID Namespace does not exist", MESSAGE_BOX_TITLE, MB_OK | MB_ICONASTERISK);
 		} else {
