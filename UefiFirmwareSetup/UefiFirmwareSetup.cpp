@@ -2,7 +2,7 @@
 
 #define EFI_OS_INDICATIONS_BOOT_TO_FW_UI	0x0000000000000001
 #define EFI_GLOBAL_VARIABLE_GUID						L"{8BE4DF61-93CA-11d2-AA0D-00E098032B8C}"
-#define MESSAGE_BOX_TITLE									L"PX GoFirmwareUI 0.2"
+#define MESSAGE_BOX_TITLE									L"PX GoFirmwareUI 0.3"
 
 bool RasiePrivileges(void)
 {
@@ -20,9 +20,7 @@ bool RasiePrivileges(void)
 		&tkp.Privileges[0].Luid);
 	tkp.PrivilegeCount = 1;
 	tkp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
-
 	AdjustTokenPrivileges(hToken, FALSE, &tkp, 0, NULL, &len);
-
 	if (GetLastError() != ERROR_SUCCESS) {
 		return false;
 	}
@@ -31,12 +29,11 @@ bool RasiePrivileges(void)
 		&tkp.Privileges[0].Luid);
 	tkp.PrivilegeCount = 1;
 	tkp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
-
 	AdjustTokenPrivileges(hToken, FALSE, &tkp, 0, NULL, &len);
-
 	if (GetLastError() != ERROR_SUCCESS) {
 		return false;
 	}
+
 	return true;
 }
 
