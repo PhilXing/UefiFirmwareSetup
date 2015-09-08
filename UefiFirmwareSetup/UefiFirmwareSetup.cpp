@@ -2,7 +2,7 @@
 
 #define EFI_OS_INDICATIONS_BOOT_TO_FW_UI	0x0000000000000001
 #define EFI_GLOBAL_VARIABLE_GUID						L"{8BE4DF61-93CA-11d2-AA0D-00E098032B8C}"
-#define MESSAGE_BOX_TITLE									L"PX GoFirmwareUI 0.3"
+#define MESSAGE_BOX_TITLE									L"PX GoFirmwareUI 0.4"
 
 bool RasiePrivileges(void)
 {
@@ -86,9 +86,9 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	// Reboot the system and force all applications to close
 	//
 	MessageBox(NULL, L"System will reboot to BIOS setup", MESSAGE_BOX_TITLE, MB_OK | MB_ICONASTERISK);
-    if (!ExitWindowsEx(EWX_REBOOT | EWX_FORCE,
- 	  SHTDN_REASON_MAJOR_OPERATINGSYSTEM |
- 	  SHTDN_REASON_MINOR_UPGRADE |
+    if (!ExitWindowsEx(EWX_REBOOT,
+ 	  SHTDN_REASON_MAJOR_OTHER |
+ 	  SHTDN_REASON_MINOR_OTHER |
 	  SHTDN_REASON_FLAG_PLANNED)) {
 		  MessageBox(NULL, L"Failed to Reboot the system.", MESSAGE_BOX_TITLE, MB_OK | MB_ICONASTERISK);
           return 6;
